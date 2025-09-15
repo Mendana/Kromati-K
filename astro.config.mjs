@@ -4,9 +4,10 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://kromati-k.web.app',
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'Kromati-K',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			sidebar: [
 				{
@@ -21,6 +22,17 @@ export default defineConfig({
 					autogenerate: { directory: 'reference' },
 				},
 			],
+			customCss: [
+				'./src/styles/custom.css'
+			],
+			// logo: {
+			// 	src: '/logo.png',
+			// },
+			defaultLocale: 'es',
+			locales: {
+				es: {label: 'Español' },
+				en: { label: 'English'},
+			}
 		}),
 	],
 });
