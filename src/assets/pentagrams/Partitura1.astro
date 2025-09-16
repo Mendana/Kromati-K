@@ -1,0 +1,38 @@
+---
+import { onMount } from "solid-js";
+import Vex from "vexflow";
+
+onMount(() => {
+  const { Factory } = Vex;
+
+  // Limpiar el contenedor por si se vuelve a renderizar
+  const div = document.getElementById("partitura");
+  div.innerHTML = "";
+
+  // Crear renderer
+  const vf = new Factory({
+    renderer: { elementId: "partitura", width: 500, height: 200 },
+  });
+
+  const score = vf.EasyScore();
+  const system = vf.System();
+
+  // Crear un pentagrama 4/4 con dos voces
+  system
+    .addStave({
+      voices: [
+        // Voz superior
+        score.voice(score.notes("C#5/q, B4, A4, G#4", { stem: "up" })),
+        // Voz inferior
+        score.voice(score.notes("C#4/h, C#4", { stem: "down" })),
+      ],
+    })
+    .addClef("treble")
+    .addTimeSignature("4/4");
+
+  // Dibujar
+  vf.draw();
+});
+---
+
+<div id="partitura"></div>

@@ -27,3 +27,11 @@
 	--sl-color-gray-7: #f4f6f9;
 	--sl-color-black: #ffffff;
 }
+
+
+/* Custom styles */
+.tabla-centrada {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
